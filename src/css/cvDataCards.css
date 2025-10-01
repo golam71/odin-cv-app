@@ -1,0 +1,35 @@
+.personal-details,
+.education,
+.experience {
+  margin-bottom: 10px;
+  background-color: var(--main-bg);
+  padding: 10px;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  & label {
+    display: flex;
+    flex-direction: column;
+  }
+  & h2 {
+    margin: 10px 0px;
+    color: var(--heading);
+  }
+  & input {
+    margin: 10px 0px;
+    background-color: var(--light-bg);
+    border: none;
+    padding: 8.5px 10px;
+    color: var(--text);
+    border-radius: 5px;
+  }
+  & button {
+    color: var(--text);
+    padding: 8.5px 10px;
+    border-radius: 5px;
+    background-color: var(--dark-bg);
+    max-width: fit-content;
+    margin: 5px auto;
+    border: none;
+  }
+}
