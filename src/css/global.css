@@ -28,7 +28,8 @@ body {
 
 .cvdata {
   background-color: var(--light-bg);
-  min-width: 300px;
+  width: 300px;
+
   margin: 10px;
   padding: 10px;
   border-radius: var(--radius);
