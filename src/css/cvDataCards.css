@@ -40,3 +40,10 @@
   margin: 3px 0px;
   border-radius: var(--radius);
 }
+
+.experience .exp-item {
+  background-color: var(--light-bg);
+  padding: 5px 10px;
+  margin: 3px 0px;
+  border-radius: var(--radius);
+}

@@ -9,7 +9,7 @@ let data = {
 };
 
 export function Education() {
-  const [eduData, setEduData] = useState([]);
+  const [expData, setexpData] = useState([]);
   const [formData, setFormData] = useState({ ...data });
   const [editMode, setEditMode] = useState(false);
 
@@ -20,13 +20,13 @@ export function Education() {
         <Form
           formData={formData}
           setFormData={setFormData}
-          eduData={eduData}
-          setEduData={setEduData}
+          expData={expData}
+          setexpData={setexpData}
           setEditMode={setEditMode}
         />
       ) : (
-        <ShowEduData
-          eduData={eduData}
+        <ShowexpData
+          expData={expData}
           setEditMode={setEditMode}
           setFormData={setFormData}
         />
@@ -35,15 +35,15 @@ export function Education() {
   );
 }
 
-function Form({ eduData, setEduData, setEditMode, formData, setFormData }) {
+function Form({ expData, setexpData, setEditMode, formData, setFormData }) {
   const handleSubmit = () => {
-    const exists = eduData.some((item) => item.Name === formData.Name);
+    const exists = expData.some((item) => item.Name === formData.Name);
 
     const newArr = exists
-      ? eduData.map((item) => (item.Name === formData.Name ? formData : item))
-      : [...eduData, formData];
+      ? expData.map((item) => (item.Name === formData.Name ? formData : item))
+      : [...expData, formData];
 
-    setEduData(newArr);
+    setexpData(newArr);
     setFormData({ ...data });
     setEditMode(false);
   };
@@ -70,9 +70,9 @@ function Form({ eduData, setEduData, setEditMode, formData, setFormData }) {
   );
 }
 
-function ShowEduData({ eduData, setEditMode, setFormData }) {
+function ShowexpData({ expData, setEditMode, setFormData }) {
   const handleShowData = (name) => {
-    const item = eduData.find((i) => i.Name === name);
+    const item = expData.find((i) => i.Name === name);
     if (item) {
       setFormData(item);
       setEditMode(true);
@@ -81,7 +81,7 @@ function ShowEduData({ eduData, setEditMode, setFormData }) {
 
   return (
     <>
-      {eduData
+      {expData
         .filter((item) => item.Name)
         .map((item) => (
           <p
