@@ -8,7 +8,7 @@ export function PersonalDetails({ personalDetails, setPersonalDetails }) {
     });
   }
 
-  let data = ["Full Name", "Email", "Address"];
+  let data = ["Full Name", "Email", "Address", "Phone Number"];
   return (
     <div className="personal-details">
       <h2>Personal Details</h2>

@@ -22,7 +22,7 @@ body {
   background-color: var(--light-bg);
   flex: 1;
   margin: 10px;
-  padding: 10px;
+
   border-radius: var(--radius);
 }
 

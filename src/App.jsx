@@ -8,6 +8,7 @@ export default function App() {
     "Full Name": "",
     Email: "",
     Address: "",
+    "Phone Number": "",
   });
 
   // education
@@ -48,14 +49,18 @@ export default function App() {
         eduEditMode={eduEditMode}
         setEduEditMode={setEduEditMode}
         //
-        expEditMode={expEditMode}
-        setExpEditMode={setExpEditMode}
-        expFormData={expFormData}
-        setExpFormData={setExpFormData}
         expData={expData}
         setExpData={setExpData}
+        expFormData={expFormData}
+        setExpFormData={setExpFormData}
+        expEditMode={expEditMode}
+        setExpEditMode={setExpEditMode}
       />
-      <CV />
+      <CV
+        personalDetails={personalDetails}
+        eduData={eduData}
+        expData={expData}
+      />
     </>
   );
 }
