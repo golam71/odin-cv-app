@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-let data = {
+let educationdata = {
   Name: "",
   Degree: "",
   "Start Time": "",
@@ -8,80 +6,107 @@ let data = {
   Location: "",
 };
 
-export function Education() {
-  const [expData, setexpData] = useState([]);
-  const [formData, setFormData] = useState({ ...data });
-  const [editMode, setEditMode] = useState(false);
-
+export function Education({
+  eduData,
+  setEduData,
+  eduFormData,
+  setEduFormData,
+  eduEditMode,
+  setEduEditMode,
+}) {
   return (
     <div className="education">
       <h2>Education</h2>
-      {editMode ? (
+      {eduEditMode ? (
         <Form
-          formData={formData}
-          setFormData={setFormData}
-          expData={expData}
-          setexpData={setexpData}
-          setEditMode={setEditMode}
+          eduFormData={eduFormData}
+          setEduFormData={setEduFormData}
+          eduData={eduData}
+          setEduData={setEduData}
+          setEditMode={setEduEditMode}
         />
       ) : (
-        <ShowexpData
-          expData={expData}
-          setEditMode={setEditMode}
-          setFormData={setFormData}
+        <ShowEduData
+          eduData={eduData}
+          setEditMode={setEduEditMode}
+          setEduFormData={setEduFormData}
         />
       )}
     </div>
   );
 }
 
-function Form({ expData, setexpData, setEditMode, formData, setFormData }) {
+function Form({
+  eduData,
+  setEduData,
+  setEditMode,
+  eduFormData,
+  setEduFormData,
+}) {
   const handleSubmit = () => {
-    const exists = expData.some((item) => item.Name === formData.Name);
+    const exists = eduData.some((item) => item.Name === eduFormData.Name);
 
     const newArr = exists
-      ? expData.map((item) => (item.Name === formData.Name ? formData : item))
-      : [...expData, formData];
+      ? eduData.map((item) =>
+          item.Name === eduFormData.Name ? eduFormData : item
+        )
+      : [...eduData, eduFormData];
 
-    setexpData(newArr);
-    setFormData({ ...data });
+    setEduData(newArr);
+    setEduFormData({ ...educationdata });
+    setEditMode(false);
+  };
+
+  const handleDelete = () => {
+    const name = eduFormData["Name"];
+    const newArr = eduData.filter((item) => item["Name"] !== name);
+    setEduFormData({ ...educationdata });
+    setEduData(newArr);
     setEditMode(false);
   };
 
   return (
     <>
-      {Object.keys(data).map((key) => (
+      {Object.keys(educationdata).map((key) => (
         <label htmlFor={key} key={key}>
           {key}
           <input
             type="text"
             name={key}
             id={key}
-            value={formData[key]}
+            value={eduFormData[key]}
             onChange={(e) =>
-              setFormData({ ...formData, [e.target.name]: e.target.value })
+              setEduFormData({
+                ...eduFormData,
+                [e.target.name]: e.target.value,
+              })
             }
           />
         </label>
       ))}
 
       <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleDelete}>
+        {eduData.some((i) => i["Name"] === eduFormData["Name"])
+          ? "Delete"
+          : "Cancel"}
+      </button>
     </>
   );
 }
 
-function ShowexpData({ expData, setEditMode, setFormData }) {
+function ShowEduData({ eduData, setEditMode, setEduFormData }) {
   const handleShowData = (name) => {
-    const item = expData.find((i) => i.Name === name);
+    const item = eduData.find((i) => i.Name === name);
     if (item) {
-      setFormData(item);
+      setEduFormData(item);
       setEditMode(true);
     }
   };
 
   return (
     <>
-      {expData
+      {eduData
         .filter((item) => item.Name)
         .map((item) => (
           <p

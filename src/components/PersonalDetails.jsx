@@ -1,14 +1,6 @@
 import "../css/cvDataCards.css";
 
-import { useState } from "react";
-
-export function PersonalDetails() {
-  const [personalDetails, setPersonalDetails] = useState({
-    "Full Name": "",
-    Email: "",
-    Address: "",
-  });
-
+export function PersonalDetails({ personalDetails, setPersonalDetails }) {
   function handleChange(e) {
     setPersonalDetails({
       ...personalDetails,

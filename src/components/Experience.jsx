@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-let data = {
+let expdata = {
   "Company Name": "",
   "Position Title": "",
   "Start Date": "",
@@ -9,110 +7,119 @@ let data = {
   Description: "",
 };
 
-export function Experience() {
-  const [editMode, setEditMode] = useState(false);
-  const [formData, setFormData] = useState(data);
-  const [expData, setExpData] = useState([]);
-
+export function Experience({
+  expEditMode,
+  setExpEditMode,
+  expFormData,
+  setExpFormData,
+  expData,
+  setExpData,
+}) {
   return (
     <div className="experience">
       <h2>Experience</h2>
-      {editMode ? (
+      {expEditMode ? (
         <Form
-          formData={formData}
-          setFormData={setFormData}
-          setEditMode={setEditMode}
+          expFormData={expFormData}
+          setExpFormData={setExpFormData}
+          setExpEditMode={setExpEditMode}
           expData={expData}
           setExpData={setExpData}
         />
       ) : (
         <ShowExpData
           expData={expData}
-          setEditMode={setEditMode}
-          setFormData={setFormData}
+          setExpEditMode={setExpEditMode}
+          setFormData={setExpFormData}
         />
       )}
     </div>
   );
 }
 
-function Form({ formData, setFormData, setExpData, expData, setEditMode }) {
+function Form({
+  expFormData,
+  setExpFormData,
+  setExpData,
+  expData,
+  setExpEditMode,
+}) {
   function handleForm() {
-    let name = formData["Company Name"];
-    let exists = expData.some((item) => item["Company Name"] == name);
+    let name = expFormData["Company Name"];
+    let exists = expData.some((item) => item["Company Name"] === name);
 
     const newArr = exists
-      ? expData.map((item) => (item["Company Name"] === name ? formData : item))
-      : [...expData, formData];
+      ? expData.map((item) =>
+          item["Company Name"] === name ? expFormData : item
+        )
+      : [...expData, expFormData];
 
     setExpData(newArr);
-    setFormData(data);
-    setEditMode(false);
+    setExpFormData(expdata);
+    setExpEditMode(false);
   }
 
   function handleDelete() {
-    let name = formData["Company Name"];
+    let name = expFormData["Company Name"];
     let newArr = expData.filter((item) => item["Company Name"] !== name);
     setExpData(newArr);
-    setFormData(data);
-    setEditMode(false);
+    setExpFormData(expdata);
+    setExpEditMode(false);
   }
+
   return (
     <>
-      {Object.keys(data).map((input) => (
+      {Object.keys(expdata).map((input) => (
         <label htmlFor={input} key={input}>
           {input}
           <input
             type="text"
             id={input}
             name={input}
-            value={formData[input]}
+            value={expFormData[input]}
             onChange={(e) =>
-              setFormData({ ...formData, [e.target.name]: e.target.value })
+              setExpFormData({
+                ...expFormData,
+                [e.target.name]: e.target.value,
+              })
             }
           />
         </label>
       ))}
-      <button onClick={() => handleForm()}>Submit</button>
-      <button onClick={() => handleDelete()}>Delete</button>
+      <button onClick={handleForm}>Submit</button>
+      <button onClick={handleDelete}>
+        {expData.some((i) => i["Company Name"] === expFormData["Company Name"])
+          ? "Delete"
+          : "Cancel"}
+      </button>
     </>
   );
 }
 
-function ShowExpData({ expData, setEditMode, setFormData }) {
+function ShowExpData({ expData, setExpEditMode, setExpFormData }) {
   function handleShowData(name) {
-    const item = expData.find((i) => i["Company Name"] == name);
+    const item = expData.find((i) => i["Company Name"] === name);
     if (item) {
-      setFormData(item);
-      setEditMode(true);
+      setExpFormData(item);
+      setExpEditMode(true);
     }
   }
 
   return (
     <>
-      {expData.map((item) => {
-        if (item["Company Name"].length >= 1) {
-          return (
-            <p
-              className="exp-item"
-              name={item["Company Name"]}
-              key={item["Company Name"]}
-              onClick={() => {
-                handleShowData(item["Company Name"]);
-              }}
-            >
-              {item["Company Name"]}
-            </p>
-          );
-        }
-      })}
-      <button
-        onClick={() => {
-          setEditMode(true);
-        }}
-      >
-        + Add
-      </button>
+      {expData
+        .filter((item) => item["Company Name"])
+        .map((item) => (
+          <p
+            className="exp-item"
+            name={item["Company Name"]}
+            key={item["Company Name"]}
+            onClick={() => handleShowData(item["Company Name"])}
+          >
+            {item["Company Name"]}
+          </p>
+        ))}
+      <button onClick={() => setExpEditMode(true)}>+ Add</button>
     </>
   );
 }
