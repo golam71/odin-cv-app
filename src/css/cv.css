@@ -1,0 +1,26 @@
+h1,
+.personal {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--dark-bg);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.edu h2 {
+  margin: 25px 0px;
+  text-align: center;
+  background-color: var(--main-bg);
+}
+
+.edu {
+  margin: 0px 25px;
+}
+
+.between {
+  display: flex;
+}
