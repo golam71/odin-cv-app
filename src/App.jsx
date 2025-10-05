@@ -122,15 +122,6 @@ export default function App() {
       Description:
         "Supported backend development with Node.js and MongoDB, conducted code reviews, and contributed to project documentation.",
     },
-    {
-      "Company Name": "Freelance / Personal Projects",
-      "Position Title": "Full Stack Developer",
-      "Start Date": "2016",
-      "End Date": "Present",
-      Location: "Remote",
-      Description:
-        "Developed and deployed multiple personal and client web applications using React, Node.js, and PostgreSQL. Focused on responsive and accessible design.",
-    },
   ]);
   const [expFormData, setExpFormData] = useState({ ...expdata });
   const [expEditMode, setExpEditMode] = useState(false);
