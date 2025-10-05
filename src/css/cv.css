@@ -10,17 +10,103 @@ h1,
   display: flex;
   justify-content: space-around;
 }
+/*  */
 
-.edu h2 {
+.edu h2,
+.exp h2 {
   margin: 25px 0px;
   text-align: center;
   background-color: var(--main-bg);
 }
 
-.edu {
+.edu,
+.exp {
   margin: 0px 25px;
 }
 
 .between {
   display: flex;
+}
+
+.between div:first-child {
+  width: 200px;
+  padding-right: 30px;
+}
+.between {
+  padding-top: 20px;
+}
+
+.edu,
+.exp {
+  max-width: fit-content;
+  min-width: 700px;
+  margin: 0 auto;
+}
+
+b {
+  font-family: serif;
+  font-style: bold;
+  font-weight: 900;
+}
+
+.between div p {
+  opacity: 0.7;
+}
+
+/*  */
+
+.exp {
+  max-width: 700px;
+}
+span {
+  display: block;
+}
+
+.exp div:first-child {
+  min-width: 150px;
+}
+
+.cv {
+  padding-bottom: 50px;
+}
+
+/* mobile */
+@media (width < 700px) {
+  #root {
+    flex-direction: column;
+  }
+
+  #root > * {
+    align-self: center;
+    max-width: 350px;
+  }
+
+  .between,
+  .flex {
+    flex-direction: column;
+  }
+
+  * {
+    min-width: unset !important;
+  }
+
+  .between {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .desc {
+    padding-top: 15px;
+  }
+}
+
+/* tab */
+
+@media (width > 700px) and (width < 900px) {
+  #root {
+    flex-direction: column;
+  }
+  .cvdata {
+    width: unset !important;
+  }
 }

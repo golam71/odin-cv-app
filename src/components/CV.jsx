@@ -8,6 +8,10 @@ export default function CV({ personalDetails, eduData, expData }) {
         <h2>Education</h2>
         <Education eduData={eduData} />
       </div>
+      <div className="exp">
+        <h2>Experience</h2>
+        <Experience expData={expData} />
+      </div>
     </div>
   );
 }
@@ -28,16 +32,36 @@ function Personal({ personalDetails }) {
 function Education({ eduData }) {
   return eduData.map((item) => {
     return (
-      <div className="between">
+      <div className="between" key={item["Name"]}>
         <div>
-          <p>
+          <b>
             {item["Start Time"]} - {item["End Time"]}
-          </p>
+          </b>
           <p>{item["Location"]}</p>
         </div>
         <div>
           <b>{item["Name"]}</b>
           <p>{item["Degree"]}</p>
+        </div>
+      </div>
+    );
+  });
+}
+
+function Experience({ expData }) {
+  return expData.map((item) => {
+    return (
+      <div className="between" key={item["Company Name"]}>
+        <div>
+          <b>
+            {item["Start Date"]} - {item["End Date"]}
+          </b>
+          <p>{item["Location"]}</p>
+        </div>
+        <div>
+          <b>{item["Company Name"]}</b>
+          <span>{item["Position Title"]}</span>
+          <p className="desc">{item["Description"]}</p>
         </div>
       </div>
     );

@@ -28,6 +28,7 @@ export function Experience({
         />
       ) : (
         <ShowExpData
+          setExpFormData={setExpFormData}
           expData={expData}
           setExpEditMode={setExpEditMode}
           setFormData={setExpFormData}

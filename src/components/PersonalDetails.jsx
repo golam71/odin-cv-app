@@ -22,6 +22,7 @@ export function PersonalDetails({ personalDetails, setPersonalDetails }) {
               type="text"
               name={item}
               id={item}
+              value={personalDetails[item]}
               onChange={(e) => {
                 handleChange(e);
               }}
