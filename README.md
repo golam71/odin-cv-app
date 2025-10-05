@@ -17,4 +17,4 @@ There are 2 main componenets under root
 All of the data/state is passed into the root `App` component and passed via reference to the other components.
 
 ## Theming
-Theme is based on the famous `nightowl` vscode theme with slight modifications. `CSS variables` were used to 
+Theme is based on the famous `nightowl` vscode theme with slight modifications. `CSS variables` were used.
