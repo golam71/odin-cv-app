@@ -1,6 +1,6 @@
 # CV Applcation
 
-This is a very simple react based application to generate curriculum vitae. Project relies heavily on react hooks specifically `useState` for data.
+This is a very simple react based application to generate curriculum vitae. Project relies heavily on react hooks specifically `useState` for data. [Live Preview](https://odin-cv-react-app.netlify.app/)
 
 ![image](./public/image.png)
 
