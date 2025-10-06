@@ -18,3 +18,18 @@ All of the data/state is passed into the root `App` component and passed via ref
 
 ## Theming
 Theme is based on the famous `nightowl` vscode theme with slight modifications. `CSS variables` were used.
+
+## Build and Install
+
+To run locally clone the repo and run
+
+```bash
+npm i
+npm run dev
+```
+
+To build locally 
+
+```bash
+npm run build
+```
